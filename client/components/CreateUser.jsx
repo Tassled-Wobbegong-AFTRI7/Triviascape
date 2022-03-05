@@ -11,24 +11,24 @@ class CreateUser extends Component {
     super(props);
   }
   handleSubmit(e) {
-    let submitData;
+    let submitData = {};
     const formData = new FormData(e.currentTarget);
+    e.preventDefault();
     for (let [key, value] of formData.entries()) submitData[key] = value;
 
-    fetch("/createUser", {
+
+    fetch("/data/login/createUser", {
       method: "POST",
-      headers: { "Content-Type": Application / JSON },
-      body: JSON.stringify({
-        username: submitData.username,
-        password: submitData.password,
-      }),
+      headers: { "Content-Type": "Application/JSON" },
+      body: JSON.stringify({ ...submitData }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("User created succesfully");
+        console.log("User created succesfully:");
+        console.log(data)
       })
       .catch((error) => {
-        console.log("fetch failed");
+        console.log(error);
       });
   }
 

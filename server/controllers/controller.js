@@ -4,8 +4,9 @@ const user = require('../models/loginModel');
 const triviaController = {};
 
 triviaController.createUser = (req, res, next) => {
+  console.log(req.body)
   const { username, password } = req.body;
-  user.Create({username: username, password: password})
+  user.create({username: username, password: password})
     .then((response) => {
       res.locals.user = response;
       return next();
@@ -20,13 +21,16 @@ triviaController.createUser = (req, res, next) => {
 }
 
 triviaController.loginUser = (req, res, next) => {
+  console.log(req.body)
   const { username, password } = req.body;
   user.findOne({username: username, password: password})
     .then((response) => {
       res.locals.user = response;
+      console.log(response)
       return next();
     })
     .catch((err) => {
+      console.log(err)
       return ({
         log: 'Unable to find new database document',
         status: 400,

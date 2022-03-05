@@ -27,21 +27,21 @@ class Login extends Component {
     for (let [key, value] of formData.entries()) submitData[key] = value;
     console.log(submitData);
 
-    // fetch("/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": Application / JSON },
-    //   body: JSON.stringify({
-    //     username: submitData.username,
-    //     password: submitData.password,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log("Login succesful");
-    //   })
-    //   .catch((error) => {
-    //     console.log("fetch failed");
-    //   });
+    fetch("/data/login", {
+      method: "POST",
+      headers: { "Content-Type": "Application/JSON" },
+      body: JSON.stringify({
+        username: submitData.username,
+        password: submitData.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Login succesful");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
