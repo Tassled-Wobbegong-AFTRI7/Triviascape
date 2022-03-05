@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   res.send('!!!!!IS THIS WORKING!!!!!');
 });
 
-app.use('/login', loginRouter);
+app.use('/', loginRouter);
 
 app.listen(PORT, () => {
   console.log(`Server Listening on port: http://localhost:${PORT}`);
