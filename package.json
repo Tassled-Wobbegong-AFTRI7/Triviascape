@@ -5,8 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "nodemon node server/server.js",
-    "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development concurrently  \"nodemon server/server.js\" \"webpack-dev-server --open\"",
+    "build": "cross-env NODE_ENV=development webpack",
+    "dev": "cross-env NODE_ENV=development concurrently  \"nodemon server/server.js\" \"webpack-dev-server --open\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,6 +14,7 @@
   "dependencies": {
     "concurrently": "^7.0.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "express": "^4.17.3",
     "mongoose": "^6.2.4",
     "react": "^17.0.2",
