@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import LoginContainer from "./containers/LoginContainer.jsx";
+
+const mapStateToProps = (state) => ({
+  test: state.trivia.test,
+});
 
 class App extends Component {
   constructor(props) {
@@ -7,10 +13,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>it renders</h1>
+        <LoginContainer />
       </div>
     );
   }
 }
 
-export default App;
+export default connect(mapStateToProps, null)(App);
