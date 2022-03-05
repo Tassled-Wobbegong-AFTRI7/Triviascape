@@ -1,13 +1,11 @@
-const { user } = require("pg/lib/defaults");
+const user = require('../models/loginModels');
 
 
 const triviaController = {};
 
-const dummyObject = { username: 'test1', password: 'test2' };
-
 triviaController.createUser(req, res, next) {
-  const { userName, passWord } = req.body;
-  user.Create({userName: userName, passWord: passWord})
+  const { username, password } = req.body;
+  user.Create({username: username, password: password})
     .then((response) => {
       res.locals.user = response;
       return next();
@@ -22,8 +20,8 @@ triviaController.createUser(req, res, next) {
 }
 
 triviaController.loginUser(req, res, next) {
-  const { userName, passWord } = req.body;
-  user.findOne({userName: userName, passWord: passWord})
+  const { username, password } = req.body;
+  user.findOne({username: username, password: password})
     .then((response) => {
       res.locals.user = response;
       return next();
