@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const  Schema  = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 // The document schema should have 3 things
 // A "firstName" that is a string
@@ -10,8 +10,8 @@ const  Schema  = mongoose.Schema;
 // Create your schema here
 
 const userSchema = new Schema({
-  userName: { type: String, required: true },
-  passWord: { type: String, required: true },
+  username: { type: String, required: true },
+  password: { type: String, required: true },
 });
 
 // You must export your model through module.exports
