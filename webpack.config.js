@@ -43,7 +43,9 @@ module.exports = {
       directory: path.resolve(__dirname, "dist"),
     },
     proxy: {
-      "/api": "http://localhost:3000",
+      '/data': {
+        target: "http://localhost:3000"
+      },
     },
   },
 };
