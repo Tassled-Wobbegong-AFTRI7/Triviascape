@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose.Schema;
+const  Schema  = mongoose.Schema;
 
 // The document schema should have 3 things
 // A "firstName" that is a string

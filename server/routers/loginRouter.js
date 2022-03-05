@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
   res.status(200).json(res.body);
 });
 
-app.post('/create', triviaController.createUser, (req, res) => {
+app.post('/createUser', triviaController.createUser, (req, res) => {
   res.status(200).json(res.locals.user);
 });
 

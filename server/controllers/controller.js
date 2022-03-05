@@ -1,4 +1,4 @@
-const user = require('../models/loginModels');
+const user = require('../models/loginModel');
 
 
 const triviaController = {};
@@ -38,3 +38,5 @@ triviaController.loginUser = (req, res, next) => {
 triviaController.test = (req, res, next) => {
   next();
 }
+
+module.exports = triviaController;
