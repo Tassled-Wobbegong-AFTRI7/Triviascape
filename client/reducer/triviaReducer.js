@@ -2,7 +2,8 @@ import * as types from "../actions/actionTypes";
 
 const initialState = {
   test: "test",
-  create: "login",
+  page: "login",
+  username: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,12 +11,10 @@ const reducer = (state = initialState, action) => {
     case "test1":
       return { ...state };
 
-    case types.CREATE_USER:
-      console.log("action fired sd");
-      return { ...state, create: "createUser" };
+    case types.PAGE_CHANGE:
+      return { ...state, page: action.payload };
 
     default: {
-      console.log("default");
       return state;
     }
   }

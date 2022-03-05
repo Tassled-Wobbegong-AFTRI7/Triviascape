@@ -1,19 +1,16 @@
 import React, { Component } from "react";
-import { createUser } from "../actions/actionsCreators.js";
+import { pageChange } from "../actions/actionsCreators.js";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
   test: state.trivia.test,
-  create: state.trivia.create,
+  page: state.trivia.page,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  createUser: () => dispatch(createUser()),
+  pageChange: (value) => dispatch(pageChange(value)),
 });
 
-// const mapDispatchToProps = {
-//   createUser,
-// };
 
 class Login extends Component {
   constructor(props) {
@@ -26,29 +23,30 @@ class Login extends Component {
     e.preventDefault();
     for (let [key, value] of formData.entries()) submitData[key] = value;
     console.log(submitData);
+    this.props.pageChange('welcome')
 
-    fetch("/data/login", {
-      method: "POST",
-      headers: { "Content-Type": "Application/JSON" },
-      body: JSON.stringify({
-        username: submitData.username,
-        password: submitData.password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Login succesful");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // fetch("/data/login", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "Application/JSON" },
+    //   body: JSON.stringify({
+    //     username: submitData.username,
+    //     password: submitData.password,
+    //   }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //      this.props.welcomeUser(data)
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   }
 
   render() {
-    if (this.props.create === "login")
+    if (this.props.page === "login")
       return (
         <div>
-          saved!
+          Login:
           <form
             onSubmit={(e) => {
               this.handleSubmit(e);
@@ -61,8 +59,7 @@ class Login extends Component {
             <input type="textbox" id="password" name="password"></input>
             <input type="submit" value="Login" />
           </form>
-          <button onClick={() => this.props.createUser()}>Create</button>
-          <div>{this.props.create}</div>
+          <button onClick={() => this.props.pageChange('createUser')}>Create an Account</button>
         </div>
       );
     else return null;
