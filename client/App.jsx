@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import LoginContainer from "./containers/LoginContainer.jsx";
+import MainContainer from "./containers/MainContainer.jsx";
 
 const mapStateToProps = (state) => ({
-  test: state.trivia.test,
 });
 
 class App extends Component {
@@ -14,6 +14,7 @@ class App extends Component {
     return (
       <div>
         <LoginContainer />
+        <MainContainer />
       </div>
     );
   }

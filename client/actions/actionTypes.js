@@ -1,1 +1,1 @@
-export const CREATE_USER = "CREATE_USER";
+export const PAGE_CHANGE = "PAGE_CHANGE";
