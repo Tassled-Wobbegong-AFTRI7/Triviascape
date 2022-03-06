@@ -9,7 +9,9 @@ const PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://student:ilovetesting@database-assessment.6vall.mongodb.net/week-4-assessment?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongodb+srv://lmendezjr024:<password>@cluster0.npof1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+mongoose.connect('mongodb+srv://scratch-project:dg8PH0oE2bAwgKEr@cluster0.npof1.mongodb.net/scratch-projectDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.once('open', () => {
   console.log('Connected to Database');
 });
