@@ -10,7 +10,7 @@ const Schema = mongoose.Schema;
 // Create your schema here
 
 const userSchema = new Schema({
-  username: { type: String, required: true },
+  username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
 
