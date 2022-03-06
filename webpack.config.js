@@ -32,7 +32,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "/index.html",
+      template: path.join(__dirname, "/index.html"),
     }),
   ],
   resolve: {
