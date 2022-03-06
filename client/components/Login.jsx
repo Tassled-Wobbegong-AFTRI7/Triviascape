@@ -23,23 +23,24 @@ class Login extends Component {
     e.preventDefault();
     for (let [key, value] of formData.entries()) submitData[key] = value;
     console.log(submitData);
-    this.props.pageChange('welcome')
+    // this.props.pageChange('welcome')
 
-    // fetch("/data/login", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "Application/JSON" },
-    //   body: JSON.stringify({
-    //     username: submitData.username,
-    //     password: submitData.password,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //      this.props.welcomeUser(data)
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    fetch("/data/login", {
+      method: "POST",
+      headers: { "Content-Type": "Application/JSON" },
+      body: JSON.stringify({
+        username: submitData.username,
+        password: submitData.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if(data !== null) return this.props.pageChange('welcome')
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
