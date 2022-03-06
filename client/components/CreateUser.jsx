@@ -24,20 +24,20 @@ class CreateUser extends Component {
     for (let [key, value] of formData.entries()) submitData[key] = value;
     this.props.pageChange()
 
-    // fetch("/data/login/createUser", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "Application/JSON" },
-    //   body: JSON.stringify({ ...submitData }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log("User created succesfully:");
-    //     console.log(data)
-    //     this.props.pageChange();
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    fetch("/data/login/createUser", {
+      method: "POST",
+      headers: { "Content-Type": "Application/JSON" },
+      body: JSON.stringify({ ...submitData }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("User created succesfully:");
+        console.log(data)
+        this.props.pageChange();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {

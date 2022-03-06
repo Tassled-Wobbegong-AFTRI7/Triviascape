@@ -23,6 +23,7 @@ class Login extends Component {
     e.preventDefault();
     for (let [key, value] of formData.entries()) submitData[key] = value;
     console.log(submitData);
+    // this.props.pageChange('welcome')
 
     fetch("/data/login", {
       method: "POST",
@@ -34,7 +35,8 @@ class Login extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-         this.props.pageChange('welcome')
+        console.log(data)
+        if(data !== null) return this.props.pageChange('welcome')
       })
       .catch((error) => {
         console.log(error);
