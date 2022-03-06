@@ -8,7 +8,7 @@ class LoginContainer extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="LoginContainer">
         <Login />
         <CreateUser />
       </div>
