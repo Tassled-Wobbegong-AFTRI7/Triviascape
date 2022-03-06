@@ -1,7 +1,22 @@
 import * as types from "./actionTypes";
 
-export const pageChange = (value) => ({
+export const pageChange = (value, username) => ({
   type: types.PAGE_CHANGE,
-  payload: value,
+  payload: {value, username}
+}); 
+
+export const startGame = (category, username) => ({
+  type: types.START_GAME,
+  payload: {category, username}
+}); 
+
+export const addQuestions = (data) => ({   
+  type: types.ADD_QUESTIONS,
+  payload: data
+});
+
+export const answerQuestion = (answer) => ({
+  type: types.ANSWER_QUESTION,
+  payload: answer
 });
 

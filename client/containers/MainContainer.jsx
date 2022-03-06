@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Welcome from '../components/Welcome.jsx';
 import { connect } from "react-redux";
+import Game from '../components/Game.jsx';
 
 const mapStateToProps = (state) => ({
   page: state.trivia.page,
@@ -11,12 +12,18 @@ class MainContainer extends Component {
     super(props);
   }
   render() {
-    if (this.props.page === 'welcome' || this.props.page === 'main') return (
-      <div>
+    // let game = []
+    // if (this.props.page === 'game') game.push(<Game />)
+
+    if (this.props.page === 'welcome') return (
+      <div className="MainContainer" >
         <Welcome />
-        main container rendered
       </div>
     );
+    else if (this.props.page === 'game') return (      
+      <div className="MainContainer" >
+        <Game />
+      </div>)
     else return null
   }
 }
