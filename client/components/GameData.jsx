@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Welcome from '../components/Welcome.jsx';
+import Welcome from "../components/Welcome.jsx";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
@@ -11,14 +11,16 @@ class Questions extends Component {
     super(props);
   }
   render() {
-    if (this.props.page === 'welcome' || this.props.page === 'game') return (
-      <div className="MainContainer" >
-        {/* <Welcome /> */}
-        main container rendered
-        {/* <Game /> */}
-      </div>
-    );
-    else return null
+    console.log("render");
+    if (this.props.page === "welcome" || this.props.page === "game")
+      return (
+        <div className="MainContainer">
+          {/* <Welcome /> */}
+          main container rendered
+          {/* <Game /> */}
+        </div>
+      );
+    else return null;
   }
 }
 
