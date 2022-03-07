@@ -1,24 +1,118 @@
-.LoginContainer {
+html{
+  background: url(https://wallpaper.dog/large/20485383.jpg) ;
+  background-size: cover;
+}
+
+.centralContainer {
   display: flex;
   justify-content: center;
-  background-color: slategray;
+  align-items: center;
+  height: 100%;
+}
+
+.LoginContainer {
+  /* display: flex; */
+  background-image: linear-gradient(blue,rgb(82, 82, 192), slategray, );
+  border-radius: 5%;
+  padding: 3%;
+}
+
+.loginContent, .createUserContent {
+  font-weight: 700;
+}
+
+#loginForm, #createUserForm {
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap-reverse;
+}
+
+#createUserWelcomepg, #loginWelcomepg {
+  border-radius: 10px;
+}
+#createUserWelcomepg, #loginWelcomepg:hover {
+  cursor: pointer;
+}
+
+#loginWelcomepg {
+  background-color: rgb(40, 240, 196);
+  margin-top: 5%;
+}
+ 
+#createUserWelcomepg {
+ background-color: rgb(159, 52, 231);
+ margin-top: 2%;
+
+}
+.categoryButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#categoriesSelect {
+  text-align: center;
+  width: 75%;
+  border-radius: 10px;
+}
+
+#categorySubmit {
+  background-color: rgb(40, 240, 196);
+  width: 25%;
+  border-radius: 10px;
 }
 
 .MainContainer {
-  background-color: beige;
-  border: solid 2px red;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  height: 50%;
+  width: 50%;
+  background: url('https://media.istockphoto.com/photos/underwater-scene-tropical-seabed-with-reef-and-sunshine-picture-id1152237432?b=1&k=20&m=1152237432&s=170667a&w=0&h=XyAFUjtmYme5A8h5Q4L_Ndh4U8KCDx_3fTJUnSkVdkQ=');
+  background-size: 100% 100%;
+  padding: 5%;
+  border: solid white 2px;
 }
 
 .Game {
-  background-color: aliceblue;
+  height: 100%;
+  width: 100%;
 }
 
+.welcomeContent {
+  color: white;
+  -webkit-text-stroke: 1% black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#welcomeMessage {
+  text-align: center;
+}
+
+
 .Questions {
-  background-color: cornsilk;
+  background-color: lightblue;
 }
 
 .gameStats {
   display: flex;
   gap: 10px;
   background-color: rgb(122, 216, 188);
+}
+
+button {
+  top: 550px ;
+  /* position: absolute; */
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  color: white;
+  -webkit-text-stroke: .3px black ;
 }

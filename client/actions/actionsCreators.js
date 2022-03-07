@@ -25,7 +25,18 @@ export const resetGame = (username) => ({
   payload: username,
 });
 
+export const hardMode = () => ({
+  type: types.HARD_MODE,
+  payload: ""
+})
+
 // export const gameOver = () => ({
 //   type: types.GAME_OVER,
 //   payload: "",
 // });
+
+
+export const timer = () => ({
+  type: types.TIMER,
+  payload: ""
+})

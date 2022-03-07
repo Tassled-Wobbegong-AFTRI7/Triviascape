@@ -1,19 +1,25 @@
 import React, { Component } from "react";
 import Login from "../components/Login.jsx";
 import CreateUser from "../components/CreateUser.jsx";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => ({
+  page: state.trivia.page,
+});
 
 class LoginContainer extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    return (
+    if (this.props.page === "login" || this.props.page === "createUser") return (
       <div className="LoginContainer">
         <Login />
         <CreateUser />
       </div>
     );
+    else return null
   }
 }
 
-export default LoginContainer;
+export default connect(mapStateToProps, null)(LoginContainer);
