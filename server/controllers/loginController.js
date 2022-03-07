@@ -6,16 +6,17 @@ const triviaController = {};
 triviaController.createUser = (req, res, next) => {
   console.log(req.body)
   const { username, password } = req.body;
-  console.log(username)
-  console.log(password)
+  // console.log(username)
+  // console.log(password)
   user.create({ username: username, password: password })
     .then((response) => {
+      console.log(response, "THIS IS THE RESPONSE")
       res.locals.user = response;
       return next();
     })
     .catch((err) => {
       return next({
-        log: 'Unable to create new database document',
+        log: 'Unable to create new user',
         status: 400,
         message: {err: 'Could not create user!'},
       })
