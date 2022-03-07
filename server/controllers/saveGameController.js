@@ -4,13 +4,17 @@ const game = require('../models/saveGameModel');
 const gameController = {};
 
 gameController.saveGame = (req, res, next) => {
-  const { page, username, category, questionData, questionsAnswered } = req.body;
-  game.create({ page: page, username: username, category: category, questionData: questionData, questionsAnswered: questionsAnswered })
+  console.log('from saveGame1')
+  // console.log(req.body.lives);
+  const { page, username, category, questionData, questionsAnswered, lives, points } = req.body;
+  game.create({ page: page, username: username, category: category, questionData: questionData, questionsAnswered: questionsAnswered, lives: lives, points: points })
     .then((response) => {
+      console.log(response);
       res.locals.gameState = response;
       return next();
     })
     .catch((err) => {
+      console.log(err, "Im IN THE ERROR")
       return next({
         log: 'Unable to save game state',
         status: 400,
@@ -21,9 +25,12 @@ gameController.saveGame = (req, res, next) => {
 
 
 gameController.loadGame = (req, res, next) => {
-  const { page, username, category, questionData, questionsAnswered } = req.body;
-  game.findOne({ page:page, username:username, category:category, questionData:questionData, questionsAnswered:questionsAnswered })
+  console.log('from loadgame')
+  const { username } = req.body;
+  console.log('logged from gameController.loadGame:', username )
+  game.findOne({ username: username })
     .then((response) => {
+      console.log(response, "LOAD GAME OBJECT")
       res.locals.gameState = response;
       return next;
     })
@@ -35,3 +42,5 @@ gameController.loadGame = (req, res, next) => {
       })
     })
 }
+
+module.exports = gameController;
