@@ -1,7 +1,32 @@
+html{
+  /* background-color: orange; */
+  background: url(https://wallpaper.dog/large/20485383.jpg) ;
+  background-size: cover;
+}
+
 .LoginContainer {
   display: flex;
   justify-content: center;
-  background-color: slategray;
+}
+
+.loginContent, .createUserContent {
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(rgb(82, 82, 192), slategray);
+  padding: 2%;
+  margin-top: 12%;
+  border-radius: 5px;
+}
+
+#loginForm, #createUserForm {
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap-reverse;
+}
+
+input {
 }
 
 .MainContainer {

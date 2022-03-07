@@ -46,9 +46,11 @@ class Login extends Component {
   render() {
     if (this.props.page === "login")
       return (
-        <div className="loginContent">
+        <div className="loginContent" style={{fontSize: "20px"}}>
           Welcome! Login here:
-          <form onSubmit={(e) => { this.handleSubmit(e) }} >
+          <br></br>
+          <br></br>
+          <form id="loginForm" onSubmit={(e) => { this.handleSubmit(e) }} >
             <label htmlFor="username"> Username </label>
             <input type="textbox" id="username" name="username"></input>
             <br></br>
@@ -56,8 +58,8 @@ class Login extends Component {
             <input type="textbox" id="password" name="password"></input>
             <br></br>
             <input type="submit" value="Login" />
+            <button onClick={() => this.props.pageChange('createUser')} >Create an Account</button>
           </form>
-          <button onClick={() => this.props.pageChange('createUser')}>Create an Account</button>
         </div>
       );
     else return null;

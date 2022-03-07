@@ -42,13 +42,17 @@ class CreateUser extends Component {
 
   render() {
     if (this.props.page === "createUser") return (
-        <div>
+        <div className="CreateUserContent" style={{fontSize: "20px"}}>
           Create an Account:
-          <form onSubmit={(e) => { this.handleSubmit(e)}} >
-            <label htmlFor="username"> </label>
-            <label htmlFor="password"> </label>
+          <br></br>
+          <br></br>
+          <form id={'createUserForm'} onSubmit={(e) => { this.handleSubmit(e)}} >
+            <label htmlFor="username"> Username </label>
             <input type="textbox" id="username" name="username"></input>
+            <br></br>
+            <label htmlFor="password"> Password </label>
             <input type="textbox" id="password" name="password"></input>
+            <br></br>
             <input type="submit" value="Create Account" />
           </form>
         </div>
