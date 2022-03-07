@@ -4,8 +4,9 @@ const game = require('../models/saveGameModel');
 const gameController = {};
 
 gameController.saveGame = (req, res, next) => {
-  const { page, username, category, questionData, questionsAnswered } = req.body;
-  game.create({ page: page, username: username, category: category, questionData: questionData, questionsAnswered: questionsAnswered })
+  // console.log(req.body)
+  const { page, username, category, questionData, questionsAnswered, lives, points } = req.body;
+  game.create({ page: page, username: username, category: category, questionData: questionData, questionsAnswered: questionsAnswered, lives: lives, points: points })
     .then((response) => {
       res.locals.gameState = response;
       return next();
@@ -21,9 +22,10 @@ gameController.saveGame = (req, res, next) => {
 
 
 gameController.loadGame = (req, res, next) => {
-  const { page, username, category, questionData, questionsAnswered } = req.body;
-  game.findOne({ page:page, username:username, category:category, questionData:questionData, questionsAnswered:questionsAnswered })
+  const { username } = req.body;
+  game.findOne({ username: username })
     .then((response) => {
+      console.log(response)
       res.locals.gameState = response;
       return next;
     })
@@ -35,3 +37,5 @@ gameController.loadGame = (req, res, next) => {
       })
     })
 }
+
+module.exports = gameController;
