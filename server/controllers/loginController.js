@@ -10,6 +10,7 @@ triviaController.createUser = (req, res, next) => {
   // console.log(password)
   user.create({ username: username, password: password })
     .then((response) => {
+      console.log(response, "THIS IS THE RESPONSE")
       res.locals.user = response;
       return next();
     })

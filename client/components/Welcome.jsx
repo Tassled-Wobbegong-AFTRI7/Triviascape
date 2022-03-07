@@ -14,12 +14,13 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Welcome = (props) => {
+  
   function handleClick(category) {
     let apiURL = `https://opentdb.com/api.php?amount=15&category=${category}&difficulty=easy`;
     fetch('/data/saveGame/loadGame', {
       method: 'POST',
       headers: { "Content-Type": "Application/JSON" },
-      body: JSON.stringify(props.username),
+      body: JSON.stringify({username: props.username }),
     })
       .then((res) => res.json())
       .then((data) => {
