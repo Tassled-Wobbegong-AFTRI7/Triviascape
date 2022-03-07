@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Questions from "./Questions";
 import { addQuestions} from "../actions/actionsCreators.js";
 import GameOver from "../components/Game.jsx";
+import Timer from "../components/Timer.jsx";
 
 const mapStateToProps = (state) => ({
   category: state.trivia.category,
@@ -32,34 +33,10 @@ class Game extends Component {
             <div>Points: {this.props.points}</div>
           </div>
           <Questions />
+          {/* <Timer /> */}
         </div>
       );
   }
 }
-
-// const Game = props => {
-
-//   useEffect(() => {
-
-// let apiURL = `https://opentdb.com/api.php?amount=15&category=${props.category}&difficulty=easy`
-
-//     fetch(apiURL)
-//       .then((res) => res.json())
-//       .then((data) => {
-//         props.addQuestions(data)
-//       })
-//       .catch((error) => {
-//         console.log('error:', error);
-//       });
-//   }, []);
-
-//   if (props.page === 'game') return(
-//     <div className="Game">
-//       Game Page Rendered
-//       <Questions />
-//     </div>
-//   );
-//   else return null
-// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

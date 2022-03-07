@@ -18,12 +18,12 @@ class GameOver extends Component {
   }
   
   render() {
-    console.log("here");
     return <div className="GameOver">Game Over
     <div> YOU LOST: {this.props.username}</div>
     <div>Questions Answered: {this.props.questionsAnswered}</div>
     <div>Points: {this.props.points}</div>
-    <button onClick={() => {this.props.resetGame(this.props.username)} }></button>
+    <button onClick={() => {this.props.resetGame(this.props.username)} }>Try Again</button>
+    <img src="https://o.dlf.pt/dfpng/smallpng/472-4721713_dead-fish-clipart-clip-art-library-library-cartoon.png" style={{width: '80%'}} />
     </div>;
   }
 }

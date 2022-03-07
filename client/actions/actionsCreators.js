@@ -34,3 +34,9 @@ export const hardMode = () => ({
 //   type: types.GAME_OVER,
 //   payload: "",
 // });
+
+
+export const timer = () => ({
+  type: types.TIMER,
+  payload: ""
+})

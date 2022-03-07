@@ -31,7 +31,6 @@ class CreateUser extends Component {
       .then((res) => res.json())
       .then((data) => {
         console.log("User created succesfully:");
-        console.log(data);
         this.props.pageChange();
       })
       .catch((error) => {

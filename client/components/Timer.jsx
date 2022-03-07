@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default function Timer() {
+const mapStateToProps = (state) => ({
+  page: state.trivia.page,
+  time: state.trivia.time,
+});
+
+const Timer = (props) => {
   return (
-    <div>Timer</div>
+    <div>Timer: {props.time} </div>
   )
 }
+
+export default connect(mapStateToProps, null)(Timer);
