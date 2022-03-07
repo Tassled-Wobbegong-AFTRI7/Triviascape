@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { pageChange } from '../actions/actionsCreators.js'
+import { pageChange } from "../actions/actionsCreators.js";
 
 const mapStateToProps = (state) => ({
   test: state.trivia.test,
@@ -8,9 +8,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  pageChange: () => dispatch(pageChange('login')),
+  pageChange: () => dispatch(pageChange("login")),
 });
-
 
 class CreateUser extends Component {
   constructor(props) {
@@ -18,11 +17,11 @@ class CreateUser extends Component {
   }
 
   handleSubmit(e) {
-    let submitData = {}; 
+    let submitData = {};
     const formData = new FormData(e.currentTarget);
     e.preventDefault();
     for (let [key, value] of formData.entries()) submitData[key] = value;
-    this.props.pageChange()
+    this.props.pageChange();
 
     fetch("/data/login/createUser", {
       method: "POST",
@@ -32,7 +31,7 @@ class CreateUser extends Component {
       .then((res) => res.json())
       .then((data) => {
         console.log("User created succesfully:");
-        console.log(data)
+        console.log(data);
         this.props.pageChange();
       })
       .catch((error) => {
@@ -41,10 +40,15 @@ class CreateUser extends Component {
   }
 
   render() {
-    if (this.props.page === "createUser") return (
+    if (this.props.page === "createUser")
+      return (
         <div>
           Create an Account:
-          <form onSubmit={(e) => { this.handleSubmit(e)}} >
+          <form
+            onSubmit={(e) => {
+              this.handleSubmit(e);
+            }}
+          >
             <label htmlFor="username"> </label>
             <label htmlFor="password"> </label>
             <input type="textbox" id="username" name="username"></input>
@@ -53,7 +57,7 @@ class CreateUser extends Component {
           </form>
         </div>
       );
-    else return null
+    else return null;
   }
 }
 

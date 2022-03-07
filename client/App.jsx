@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import LoginContainer from "./containers/LoginContainer.jsx";
 import MainContainer from "./containers/MainContainer.jsx";
 
-const mapStateToProps = (state) => ({
-});
+const mapStateToProps = (state) => ({});
 
 class App extends Component {
   constructor(props) {

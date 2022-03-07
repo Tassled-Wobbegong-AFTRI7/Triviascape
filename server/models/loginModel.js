@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
@@ -16,4 +16,4 @@ const userSchema = new Schema({
 
 // You must export your model through module.exports
 // The collection name should be 'student'
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model("user", userSchema);

@@ -1,25 +1,25 @@
-const express = require('express');
-const triviaController = require('../controllers/controller');
+const express = require("express");
+const triviaController = require("../controllers/controller");
 
 const app = express.Router();
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).json(res.body);
 });
 
-app.post('/createUser', triviaController.createUser, (req, res) => {
+app.post("/createUser", triviaController.createUser, (req, res) => {
   res.status(200).json(res.locals.user);
 });
 
-app.post('/', triviaController.loginUser, (req, res) => {
+app.post("/", triviaController.loginUser, (req, res) => {
   res.status(200).json(res.locals.user);
 });
 
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
+    log: "Express error handler caught unknown middleware error",
     status: 400,
-    message: { err: 'An error occurred' },
+    message: { err: "An error occurred" },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
