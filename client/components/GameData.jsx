@@ -16,7 +16,6 @@ class Questions extends Component {
       return (
         <div className="MainContainer">
           {/* <Welcome /> */}
-          main container rendered
           {/* <Game /> */}
         </div>
       );

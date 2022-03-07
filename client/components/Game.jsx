@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
   questionData: state.trivia.questionData,
   lives: state.trivia.lives,
   points: state.trivia.points,
+  questionsAnswered: state.trivia.questionsAnswered
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -27,10 +28,9 @@ class Game extends Component {
       return (
         <div className="Game">
           <div className="gameStats">
-            <div>{this.props.lives}</div>
-            <div>{this.props.points}</div>
+            <div>Lives: {this.props.lives}</div>
+            <div>Points: {this.props.points}</div>
           </div>
-          Game rendered
           <Questions />
         </div>
       );
