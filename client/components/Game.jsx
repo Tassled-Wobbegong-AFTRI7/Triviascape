@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
 import Questions from "./Questions";
-import { addQuestions } from "../actions/actionsCreators.js";
+import { addQuestions} from "../actions/actionsCreators.js";
 import GameOver from "../components/Game.jsx";
 
 const mapStateToProps = (state) => ({
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addQuestions: (data) => dispatch(addQuestions(data)),
+  // gameOver: () => dispatch(gameOver()),
 });
 
 class Game extends Component {
@@ -22,7 +23,6 @@ class Game extends Component {
   }
 
   render() {
-    console.log("game re-rendered");
     if (this.props.page === "game")
       return (
         <div className="Game">
@@ -32,12 +32,6 @@ class Game extends Component {
           </div>
           Game rendered
           <Questions />
-        </div>
-      );
-    else if (this.props.page === "gameOver")
-      return (
-        <div className="MainContainer">
-          <GameOver />
         </div>
       );
   }
