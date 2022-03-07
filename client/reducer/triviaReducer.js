@@ -48,11 +48,13 @@ const reducer = (state = initialState, action) => {
       newState.questionsAnswered = state.questionsAnswered + 1;
       return newState;
 
-    // case types.GAME_OVER:
-    //   console.log("reducer reached gameOVer");
-    //   newState.page = "gameOver";
-    //   newState.lives = 3;
-    //   return newState;
+    case types.RESET_GAME:
+      console.log("I'm in reset game reducer");
+      const resetState = {...initialState};
+      console.log(resetState)
+      resetState.page = "welcome";
+      resetState.username = action.payload;
+      return resetState;
 
     default: {
       return state;

@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
 import Questions from "./Questions";
-import { addQuestions, gameOver } from "../actions/actionsCreators.js";
+import { addQuestions} from "../actions/actionsCreators.js";
 import GameOver from "../components/Game.jsx";
 
 const mapStateToProps = (state) => ({
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addQuestions: (data) => dispatch(addQuestions(data)),
-  gameOver: () => dispatch(gameOver()),
+  // gameOver: () => dispatch(gameOver()),
 });
 
 class Game extends Component {

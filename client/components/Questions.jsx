@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
   startGame: (categoryValue) => dispatch(startGame(categoryValue)),
   answerQuestion: (answer, correctAnswer) =>
     dispatch(answerQuestion(answer, correctAnswer)),
-  gameOver: () => dispatch(gameOver()),
+  // gameOver: () => dispatch(gameOver()),
 });
 
 const Questions = (props) => {

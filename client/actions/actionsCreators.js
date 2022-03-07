@@ -20,6 +20,11 @@ export const answerQuestion = (answer, correctAnswer) => ({
   payload: { answer, correctAnswer },
 });
 
+export const resetGame = (username) => ({
+  type: types.RESET_GAME,
+  payload: username,
+});
+
 // export const gameOver = () => ({
 //   type: types.GAME_OVER,
 //   payload: "",
