@@ -79,9 +79,22 @@ const Questions = (props) => {
     props.questionData.results[props.questionsAnswered].question
   );
 
-  function hardModeHandler(answerArray) {
-    let button = document.getElementById('answer1')
-    button.style.left = '300'
+  function hardModeHandler() {
+    for(let i = 0; i < answersArr.length; i++) {
+      let button = document.getElementById(`answer${i}`)
+      button.style.left = Math.random()*1000
+      button.style.top = Math.random()*700
+      button.style.position = 'absolute'
+    }
+    setInterval(() => {
+      for(let i = 0; i < answersArr.length; i++) {
+        let button = document.getElementById(`answer${i}`)
+        button.style.left = parseInt(button.style.left) + (Math.round(Math.random()) ? 10: -10)
+        button.style.top = parseInt(button.style.left)+ (Math.round(Math.random()) ? 10: -10)
+        button.style.position = 'absolute'
+      };
+    }, 100);
+
   }
 
   return (

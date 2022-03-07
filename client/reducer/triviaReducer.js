@@ -8,6 +8,7 @@ const initialState = {
   questionsAnswered: 0,
   lives: 3,
   points: 0,
+  buttonPosition: ''
 };
 
 const reducer = (state = initialState, action) => {

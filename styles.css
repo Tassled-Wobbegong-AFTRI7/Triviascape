@@ -29,7 +29,7 @@ html{
 }
 
 #createUserWelcomepg, #loginWelcomepg {
-  border-radius: 8px;
+  border-radius: 10px;
 }
 #createUserWelcomepg, #loginWelcomepg:hover {
   cursor: pointer;
@@ -42,12 +42,25 @@ html{
  
 #createUserWelcomepg {
  background-color: rgb(159, 52, 231);
- margin-top: 3%;
+ margin-top: 2%;
 
+}
+.categoryButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #categoriesSelect {
   text-align: center;
+  width: 75%;
+  border-radius: 10px;
+}
+
+#categorySubmit {
+  background-color: rgb(40, 240, 196);
+  width: 25%;
+  border-radius: 10px;
 }
 
 .MainContainer {
@@ -81,7 +94,7 @@ html{
 
 
 .Questions {
-  background-color: cornsilk;
+  background-color: lightblue;
 }
 
 .gameStats {
