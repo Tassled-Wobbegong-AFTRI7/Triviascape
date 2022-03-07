@@ -41,3 +41,9 @@ input {
 .Questions {
   background-color: cornsilk;
 }
+
+.gameStats {
+  display: flex;
+  gap: 10px;
+  background-color: rgb(122, 216, 188);
+}
