@@ -19,7 +19,6 @@ const Welcome = (props) => {
     fetch(apiURL)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, "FROM HANDLECLICK - WELCOME");
         props.addQuestions(data);
         props.startGame(category, props.username);
       })
@@ -29,9 +28,12 @@ const Welcome = (props) => {
   }
 
   return (
-    <div>
-      Welcome rendered
-      {`Welcome ${props.username}`}
+    <div className='welcomeContent' >
+      <div id='welcomeMessage' style={{fontSize: '25px'}} >{`Hi ${props.username}!`} 
+      <br></br> 
+      Welcome to Team Wobblegong's Trivia Game</div>
+      <br></br> 
+      <div>Select a trivia category:</div>
       <select name="categories" id="categoriesSelect">
         <option value="9">General Knowledge</option>
         <option value="10">Entertainment: Books</option>

@@ -1,21 +1,20 @@
 html{
-  /* background-color: orange; */
   background: url(https://wallpaper.dog/large/20485383.jpg) ;
   background-size: cover;
 }
 
-.LoginContainer {
+.centralContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .loginContent, .createUserContent {
   font-weight: 700;
-  display: flex;
-  flex-direction: column;
-  background-image: linear-gradient(rgb(82, 82, 192), slategray);
-  padding: 2%;
-  margin-top: 12%;
+  width: 100%;
+  background-image: linear-gradient(blue,rgb(82, 82, 192), slategray, );
+  padding: 5%;
   border-radius: 5px;
 }
 
@@ -26,12 +25,30 @@ html{
   flex-wrap: wrap-reverse;
 }
 
-input {
+.MainContainer {
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  height: 50%;
+  width: 50%;
+  background: url('https://media.istockphoto.com/photos/underwater-scene-tropical-seabed-with-reef-and-sunshine-picture-id1152237432?b=1&k=20&m=1152237432&s=170667a&w=0&h=XyAFUjtmYme5A8h5Q4L_Ndh4U8KCDx_3fTJUnSkVdkQ=');
+  background-size: 100% 100%;
+  padding: 5%;
+  border: solid white 2px;
 }
 
-.MainContainer {
-  background-color: beige;
-  border: solid 2px red;
+.welcomeContent {
+  color: white;
+  -webkit-text-stroke: 1% black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#welcomeMessage {
+
+  text-align: center;
+
 }
 
 .Game {
