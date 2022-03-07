@@ -1,5 +1,5 @@
 const express = require("express");
-const triviaController = require("../controllers/controller");
+const triviaController = require("../controllers/loginController");
 
 const app = express.Router();
 
