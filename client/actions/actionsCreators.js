@@ -20,7 +20,7 @@ export const answerQuestion = (answer, correctAnswer) => ({
   payload: { answer, correctAnswer },
 });
 
-export const gameOver = () => ({
-  type: types.GAME_OVER,
-  payload: "",
-});
+// export const gameOver = () => ({
+//   type: types.GAME_OVER,
+//   payload: "",
+// });
