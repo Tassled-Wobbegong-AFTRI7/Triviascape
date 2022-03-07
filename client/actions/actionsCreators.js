@@ -25,6 +25,11 @@ export const resetGame = (username) => ({
   payload: username,
 });
 
+export const loadGame = (state) => ({
+  type: types.LOAD_GAME,
+  payload: state
+})
+
 // export const gameOver = () => ({
 //   type: types.GAME_OVER,
 //   payload: "",

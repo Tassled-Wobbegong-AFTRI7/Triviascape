@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
-import { startGame, addQuestions } from "../actions/actionsCreators";
+import { startGame, addQuestions, loadGame} from "../actions/actionsCreators";
 
 const mapStateToProps = (state) => ({
   page: state.trivia.page,
@@ -9,14 +9,18 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addQuestions: (data) => dispatch(addQuestions(data)),
+  loadGame: (state) => dispatch(loadGame(state)),
   startGame: (categoryValue, username) =>
     dispatch(startGame(categoryValue, username)),
 });
 
 const Welcome = (props) => {
   
-  function handleClick(category) {
+   function handleClick(category) {
+
     let apiURL = `https://opentdb.com/api.php?amount=15&category=${category}&difficulty=easy`;
+    
+    
     fetch('/data/saveGame/loadGame', {
       method: 'POST',
       headers: { "Content-Type": "Application/JSON" },
@@ -24,18 +28,25 @@ const Welcome = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, 'fetch to get saved game!!');
+        console.log('In the fetch data return')
+        if (data === null) {
+          fetch(apiURL)
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data, "FROM HANDLECLICK - WELCOME");
+            props.addQuestions(data);
+            props.startGame(category, props.username);
+          })
+          .catch((error) => {
+            console.log("error:", error);
+          });
+        }
+        else {
+          console.log(data)
+          props.loadGame(data);
+        }
       })
-    fetch(apiURL)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "FROM HANDLECLICK - WELCOME");
-        props.addQuestions(data);
-        props.startGame(category, props.username);
-      })
-      .catch((error) => {
-        console.log("error:", error);
-      });
+      
   }
 
   return (

@@ -24,22 +24,22 @@ class Login extends Component {
     // console.log(submitData);
     this.props.pageChange("welcome", "LOU");
 
-    //   fetch("/data/login", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "Application/JSON" },
-    //     body: JSON.stringify({
-    //       username: submitData.username,
-    //       password: submitData.password,
-    //     }),
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       console.log(data)
-    //       if(data !== null) return this.props.pageChange('welcome', data.username)
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
+      fetch("/data/login", {
+        method: "POST",
+        headers: { "Content-Type": "Application/JSON" },
+        body: JSON.stringify({
+          username: submitData.username,
+          password: submitData.password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+          if(data !== null) return this.props.pageChange('welcome', data.username)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   }
 
   render() {

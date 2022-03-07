@@ -1,15 +1,17 @@
 const game = require('../models/saveGameModel');
-// const { response } = require('../server');
 
 const gameController = {};
 
-gameController.saveGame = (req, res, next) => {
+gameController.saveGame = async (req, res, next) => {
   console.log('from saveGame1')
-  // console.log(req.body.lives);
+  // console.log(req.body.lives)
   const { page, username, category, questionData, questionsAnswered, lives, points } = req.body;
-  game.create({ page: page, username: username, category: category, questionData: questionData, questionsAnswered: questionsAnswered, lives: lives, points: points })
+  const result = await game.findOneAndUpdate({username: username}, { page: page, username: username, category: category, questionData: questionData, questionsAnswered: questionsAnswered, lives: lives, points: points })
+  res.locals.gameState = result;
+  if(result === null) {
+    game.create({ page: page, username: username, category: category, questionData: questionData, questionsAnswered: questionsAnswered, lives: lives, points: points })
     .then((response) => {
-      console.log(response);
+      console.log('Created from saved Game',response);
       res.locals.gameState = response;
       return next();
     })
@@ -21,6 +23,8 @@ gameController.saveGame = (req, res, next) => {
         message: {err: 'Could not save game!'},
       })
     })
+  }
+   return next();
 }
 
 
@@ -32,7 +36,7 @@ gameController.loadGame = (req, res, next) => {
     .then((response) => {
       console.log(response, "LOAD GAME OBJECT")
       res.locals.gameState = response;
-      return next;
+      return next();
     })
     .catch((err) => {
       return next({

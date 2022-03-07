@@ -49,12 +49,17 @@ const reducer = (state = initialState, action) => {
       return newState;
 
     case types.RESET_GAME:
-      console.log("I'm in reset game reducer");
       const resetState = {...initialState};
       console.log(resetState)
       resetState.page = "welcome";
       resetState.username = action.payload;
       return resetState;
+
+    case types.LOAD_GAME:  
+      console.log('in load game Reducer', action.payload)
+      const {page, username,category, questionData, questionsAnswered,lives, points} = action.payload;
+        
+      return {page:page, username:username, category: category, questionData: questionData, questionsAnswered: questionsAnswered, lives:lIDBVersionChangeEvent, points:points};
 
     default: {
       return state;

@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "concurrently": "^7.0.0",
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
