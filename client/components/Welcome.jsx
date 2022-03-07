@@ -19,7 +19,7 @@ const Welcome = (props) => {
     fetch('/data/saveGame/loadGame', {
       method: 'POST',
       headers: { "Content-Type": "Application/JSON" },
-      body: JSON.stringify(props.username),
+      body: JSON.stringify({username: props.username}),
     })
       .then((res) => res.json())
       .then((data) => {

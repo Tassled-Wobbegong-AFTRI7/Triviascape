@@ -43,7 +43,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log("lgoin page");
     if (this.props.page === "login")
       return (
         <div className="loginContent">

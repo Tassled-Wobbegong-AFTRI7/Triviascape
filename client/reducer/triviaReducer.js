@@ -28,7 +28,6 @@ const reducer = (state = initialState, action) => {
       return newState;
 
     case types.ADD_QUESTIONS:
-      console.log("reducer reached");
       newState.questionData = action.payload;
       return newState;
 

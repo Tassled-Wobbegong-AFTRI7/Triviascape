@@ -4,7 +4,8 @@ const game = require('../models/saveGameModel');
 const gameController = {};
 
 gameController.saveGame = (req, res, next) => {
-  // console.log(req.body)
+  console.log('from savegame')
+  console.log(req.body)
   const { page, username, category, questionData, questionsAnswered, lives, points } = req.body;
   game.create({ page: page, username: username, category: category, questionData: questionData, questionsAnswered: questionsAnswered, lives: lives, points: points })
     .then((response) => {
@@ -22,6 +23,7 @@ gameController.saveGame = (req, res, next) => {
 
 
 gameController.loadGame = (req, res, next) => {
+  console.log('from loadgame')
   const { username } = req.body;
   game.findOne({ username: username })
     .then((response) => {
