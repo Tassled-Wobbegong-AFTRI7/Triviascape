@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { answerQuestion, gameOver } from "../actions/actionsCreators.js";
-var he = require("he"); //Decoding Library: to turn random strings
+var he = require("he"); //'he' is a library we installed to decode html entity codes
 
 const mapStateToProps = (state) => ({
   playerState: state.trivia,
@@ -43,7 +43,6 @@ const Questions = (props) => {
   //   }
   // }, []);
 
-  let answersArr = [];
   const result = props.questionData.results[props.questionsAnswered];
 
   //used to randomize our potential answers since not having this here will have the answer appear as the last option.
@@ -61,6 +60,8 @@ const Questions = (props) => {
   const potentialAnswers = randomize(
     result.incorrect_answers.concat(result.correct_answer)
   );
+  //creating an answer array to push potential answers (buttons with the key) to the
+  let answersArr = [];
   answersArr.push();
   for (let i = 0; i < potentialAnswers.length; i++) {
     console.log("result correct answer", result.correct_answer);
@@ -75,6 +76,7 @@ const Questions = (props) => {
       </button>
     );
   }
+  //'he' is a library we installed to decode html entity codes
   const question = he.decode(
     props.questionData.results[props.questionsAnswered].question
   );

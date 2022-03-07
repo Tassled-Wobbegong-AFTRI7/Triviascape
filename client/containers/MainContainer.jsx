@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Welcome from "../components/Welcome.jsx";
 import { connect } from "react-redux";
 import Game from "../components/Game.jsx";
+import GameOver from "../components/GameOver.jsx";
 
 const mapStateToProps = (state) => ({
   page: state.trivia.page,
@@ -12,8 +13,6 @@ class MainContainer extends Component {
     super(props);
   }
   render() {
-    console.log(this.props.page, "main container render");
-
     if (this.props.page === "welcome")
       return (
         <div className="MainContainer">
@@ -24,6 +23,12 @@ class MainContainer extends Component {
       return (
         <div className="MainContainer">
           <Game />
+        </div>
+      );
+    else if (this.props.page === "gameOver")
+      return (
+        <div className="MainContainer">
+          <GameOver />
         </div>
       );
     else return null;
