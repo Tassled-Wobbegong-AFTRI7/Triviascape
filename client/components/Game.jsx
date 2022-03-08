@@ -1,8 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
 import Questions from "./Questions";
-import { addQuestions} from "../actions/actionsCreators.js";
-import GameOver from "../components/Game.jsx";
+import { addQuestions } from "../actions/actionsCreators.js";
 import Timer from "../components/Timer.jsx";
 
 const mapStateToProps = (state) => ({
@@ -11,7 +10,7 @@ const mapStateToProps = (state) => ({
   questionData: state.trivia.questionData,
   lives: state.trivia.lives,
   points: state.trivia.points,
-  questionsAnswered: state.trivia.questionsAnswered
+  questionsAnswered: state.trivia.questionsAnswered,
 });
 
 const mapDispatchToProps = (dispatch) => ({

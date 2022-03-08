@@ -36,10 +36,12 @@ const Questions = (props) => {
         console.log("error:", error);
       });
   }
+  //setting result equal to the correct question we are on. Much easier to see this if you do a query search on Postman
+  //if you paste:  https://opentdb.com/api.php?amount=10  You can see how the data looks and will have a better picture on what result is representing in this case
 
   const result = props.questionData.results[props.questionsAnswered];
 
-  //used to randomize our potential answers since not having this here will have the answer appear as the last option.
+  //Algorithim used to randomize our potential answers since not having this here will have the answer appear as the last option. Not super efficient, but seems to work.
   function randomize(answerArray) {
     const newSet = new Set();
 
@@ -59,42 +61,50 @@ const Questions = (props) => {
   answersArr.push();
   for (let i = 0; i < potentialAnswers.length; i++) {
     answersArr.push(
-        <button
-          id={`answer${i}`}
-          key={i}
-          onClick={() => {handleAnswer(potentialAnswers[i], result.correct_answer);}} >
-          {he.decode(potentialAnswers[i])}
-        </button>
+      <button
+        id={`answer${i}`}
+        key={i}
+        onClick={() => {
+          handleAnswer(potentialAnswers[i], result.correct_answer);
+        }}
+      >
+        {he.decode(potentialAnswers[i])}
+      </button>
     );
   }
   //'he' is a library we installed to decode html entity codes
-  const question = he.decode(props.questionData.results[props.questionsAnswered].question);
+  const question = he.decode(
+    props.questionData.results[props.questionsAnswered].question
+  );
   let intervalTimer;
   function hardModeHandler() {
     intervalTimer = setInterval(() => {
-      for(let i = 0; i < answersArr.length; i++) {
-        let button = document.getElementById(`answer${i}`)
-        button.style.left = Math.random()*1000
-        button.style.top = Math.random()*700
-        button.style.position = 'absolute'
-      };
+      for (let i = 0; i < answersArr.length; i++) {
+        let button = document.getElementById(`answer${i}`);
+        button.style.left = Math.random() * 1000;
+        button.style.top = Math.random() * 700;
+        button.style.position = "absolute";
+      }
     }, 1000);
-  };
+  }
 
   function undoHardModeHandler() {
-    clearInterval(intervalTimer)
-      for(let i = 0; i < answersArr.length; i++) {
-        let button = document.getElementById(`answer${i}`)
-        button.style.removeProperty('left')
-        button.style.removeProperty('top')
-        button.style.removeProperty('position')
-      };
-  };
+    clearInterval(intervalTimer);
+    for (let i = 0; i < answersArr.length; i++) {
+      let button = document.getElementById(`answer${i}`);
+      button.style.removeProperty("left");
+      button.style.removeProperty("top");
+      button.style.removeProperty("position");
+    }
+  }
 
   return (
     <div>
-      <div className="Questions" style={{fontSize: "25px"}} >
-        <div style={{fontSize: "35px", fontWeight: "bold"}} > Question #{props.questionsAnswered}: </div>
+      <div className="Questions" style={{ fontSize: "25px" }}>
+        <div style={{ fontSize: "35px", fontWeight: "bold" }}>
+          {" "}
+          Question #{props.questionsAnswered}:{" "}
+        </div>
         <br></br>
         {question}
         <br></br>

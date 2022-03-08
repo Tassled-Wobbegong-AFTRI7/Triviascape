@@ -12,6 +12,10 @@ class MainContainer extends Component {
   constructor(props) {
     super(props);
   }
+
+  /*Here, we are changing pages based on a state change occuring from our triviaReducer. We did this to further cement redux knowledge, but 
+    it probably makes more sense to use react routers, navigate to, or link. Just a suggestion */
+
   render() {
     if (this.props.page === "welcome")
       return (
