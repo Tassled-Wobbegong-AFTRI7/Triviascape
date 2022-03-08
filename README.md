@@ -12,9 +12,9 @@ Incomplete Functionality:
            Win & Restart: We did not implement the win scenario, so there has to be a screen built out for that and for the ability to restart the game at any point
 
 Stretch Functionality: 
-    -OAuth implementation: we attempted to add Oauth as indicated through our branch, but we decided to abandon it. Also this is a SPA, so Oauth might be tricky.
+    OAuth implementation: we attempted to add Oauth as indicated through our branch, but we decided to abandon it. Also this is a SPA, so Oauth might be tricky.
     
-    -Highest Score: Keeping track of high scores across users 
+    Highest Score: Keeping track of high scores across users 
     
-    -Progressive Difficulty: If a user answers a given amount of questions in a certain difficulty, fetch questions at a difficulty above that. Trivia database has easy, medium,
+     Progressive Difficulty: If a user answers a given amount of questions in a certain difficulty, fetch questions at a difficulty above that. Trivia database has easy, medium,
      and hard as difficulties. **note some categories do not have all the difficulties** 
