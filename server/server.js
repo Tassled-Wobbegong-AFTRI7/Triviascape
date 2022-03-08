@@ -23,8 +23,8 @@ mongoose.connection.once("open", () => {
 
 app.use("/", express.static(path.join(__dirname, "../dist")));
 
+// routers for logging in and saving/loading games
 app.use('/data/login', loginRouter);
-
 app.use("/data/saveGame", saveGameRouter);
 
 app.listen(PORT, () => {
