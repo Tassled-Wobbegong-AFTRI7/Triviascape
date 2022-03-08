@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { answerQuestion, gameOver } from "../actions/actionsCreators.js";
+import { answerQuestion, gameOver, timer } from "../actions/actionsCreators.js";
 var he = require("he"); //'he' is a library we installed to decode html entity codes
 
 const mapStateToProps = (state) => ({
@@ -31,17 +31,11 @@ const Questions = (props) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        console.log("cool Beans");
       })
       .catch((error) => {
         console.log("error:", error);
       });
   }
-  // useEffect(() => {
-  //   if (props.lives === 0) {
-  //     props.gameOver();
-  //   }
-  // }, []);
 
   const result = props.questionData.results[props.questionsAnswered];
 
@@ -64,33 +58,51 @@ const Questions = (props) => {
   let answersArr = [];
   answersArr.push();
   for (let i = 0; i < potentialAnswers.length; i++) {
-    console.log("result correct answer", result.correct_answer);
     answersArr.push(
-      <button
-        key={i}
-        onClick={() => {
-          handleAnswer(potentialAnswers[i], result.correct_answer);
-        }}
-      >
-        {he.decode(potentialAnswers[i])}
-      </button>
+        <button
+          id={`answer${i}`}
+          key={i}
+          onClick={() => {handleAnswer(potentialAnswers[i], result.correct_answer);}} >
+          {he.decode(potentialAnswers[i])}
+        </button>
     );
   }
   //'he' is a library we installed to decode html entity codes
-  const question = he.decode(
-    props.questionData.results[props.questionsAnswered].question
-  );
+  const question = he.decode(props.questionData.results[props.questionsAnswered].question);
+  let intervalTimer;
+  function hardModeHandler() {
+    intervalTimer = setInterval(() => {
+      for(let i = 0; i < answersArr.length; i++) {
+        let button = document.getElementById(`answer${i}`)
+        button.style.left = Math.random()*1000
+        button.style.top = Math.random()*700
+        button.style.position = 'absolute'
+      };
+    }, 1000);
+  };
+
+  function undoHardModeHandler() {
+    clearInterval(intervalTimer)
+      for(let i = 0; i < answersArr.length; i++) {
+        let button = document.getElementById(`answer${i}`)
+        button.style.removeProperty('left')
+        button.style.removeProperty('top')
+        button.style.removeProperty('position')
+      };
+  };
 
   return (
     <div>
-      <div className="Questions">
-        Questions rendered
+      <div className="Questions" style={{fontSize: "25px"}} >
+        <div style={{fontSize: "35px", fontWeight: "bold"}} > Question #{props.questionsAnswered}: </div>
         <br></br>
         {question}
         <br></br>
         {answersArr}
       </div>
-      <button onClick={() => saveGame()}>SaveGame</button>
+      <button onClick={() => saveGame()}>Save Game</button>
+      <button onClick={() => hardModeHandler()}>Hard Mode</button>
+      <button onClick={() => undoHardModeHandler()}>Undo Hard Mode</button>
     </div>
   );
 };

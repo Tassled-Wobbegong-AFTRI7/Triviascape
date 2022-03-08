@@ -8,6 +8,8 @@ const initialState = {
   questionsAnswered: 0,
   lives: 3,
   points: 0,
+  buttonPosition: '',
+  time: 10
 };
 
 const reducer = (state = initialState, action) => {
@@ -34,11 +36,7 @@ const reducer = (state = initialState, action) => {
     case types.ANSWER_QUESTION:
       if (action.payload.answer === action.payload.correctAnswer) {
         newState.points += 10;
-      } else if (
-        newState.lives === 1 &&
-        action.payload.answer !== action.payload.correctAnswer
-      ) {
-        console.log("GAMEOVER");
+      } else if (newState.lives === 1 && action.payload.answer !== action.payload.correctAnswer) {
         newState.lives--;
         newState.page = "gameOver";
       } else {
@@ -49,7 +47,6 @@ const reducer = (state = initialState, action) => {
 
     case types.RESET_GAME:
       const resetState = {...initialState};
-      console.log(resetState)
       resetState.page = "welcome";
       resetState.username = action.payload;
       return resetState;

@@ -16,7 +16,6 @@ gameController.saveGame = async (req, res, next) => {
       return next();
     })
     .catch((err) => {
-      console.log(err, "Im IN THE ERROR")
       return next({
         log: 'Unable to save game state',
         status: 400,
@@ -29,12 +28,9 @@ gameController.saveGame = async (req, res, next) => {
 
 
 gameController.loadGame = (req, res, next) => {
-  console.log('from loadgame')
   const { username } = req.body;
-  console.log('logged from gameController.loadGame:', username )
   game.findOne({ username: username })
     .then((response) => {
-      console.log(response, "LOAD GAME OBJECT")
       res.locals.gameState = response;
       return next();
     })
