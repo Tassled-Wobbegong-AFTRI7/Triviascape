@@ -14,7 +14,7 @@ app.use(express.json());
 
 // ADD YOUR DATABASE CONNECTION HERE
 mongoose.connect(
-  "",
+  "mongodb+srv://bmichare:83grams64Palms!@cluster0.lotup.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 mongoose.connection.once("open", () => {

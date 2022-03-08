@@ -1,21 +1,20 @@
 import * as types from "../actions/actionTypes";
 
 const initialState = {
-  page: "login",
-  username: "",
+  page: "login",          //determines what page should be rendered
+  username: "",          
   category: "",
-  questionData: "",
-  questionsAnswered: 0,
+  questionData: "",       
+  questionsAnswered: 0,   //current index of question
   lives: 3,
   points: 0,
-  buttonPosition: "",
-  time: 10,
 };
 
 const reducer = (state = initialState, action) => {
   const newState = { ...state };
 
   switch (action.type) {
+    //updates page and username if provided
     case types.PAGE_CHANGE:
       newState.username = action.payload.username;
       newState.page = action.payload.value;
@@ -26,13 +25,14 @@ const reducer = (state = initialState, action) => {
       newState.page = "game";
       return newState;
 
+    //populates questionData with questions returned from fetch to trivia API
     case types.ADD_QUESTIONS:
       newState.questionData = action.payload;
       return newState;
 
+    //Verifying if the answer is equal to correct answer. If so, add 10 points.
+    //Else if is checking if you have one life left. If you do and get the answer wrong. Page is updated to gameOver and you are are routed to that page.
     case types.ANSWER_QUESTION:
-      //Verifying if the answer is equal to correct answer. If so, add 10 points.
-      //Else if is checking if you have one life left. If you do and get the answer wrong. Page is updated to gameOver and you are are routed to that page.
       if (action.payload.answer === action.payload.correctAnswer) {
         newState.points += 10;
       } else if (
@@ -44,16 +44,18 @@ const reducer = (state = initialState, action) => {
       } else {
         newState.lives--;
       }
-      //increment in the questions answered, so that we can use this as the index to cycle through our question bank.
+    //increment in the questions answered, so that we can use this as the index to cycle through our question bank.
       newState.questionsAnswered = state.questionsAnswered + 1;
       return newState;
-
+    
+    //resets the game, takes user back to welcome page
     case types.RESET_GAME:
       const resetState = { ...initialState };
       resetState.page = "welcome";
       resetState.username = action.payload;
       return resetState;
 
+    //loads saved game, updates state to the values from previously saved game
     case types.LOAD_GAME:
       console.log("in load game Reducer", action.payload);
       const {

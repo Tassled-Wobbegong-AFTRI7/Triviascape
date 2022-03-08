@@ -14,32 +14,24 @@ const mapDispatchToProps = (dispatch) => ({
   resetGame: (username) => dispatch(resetGame(username)),
 });
 
-class GameOver extends Component {
-  constructor(props) {
-    super(props);
-  }
+let GameOver = (props) => {
+  return (
+    <div className="GameOver">
+      Game Over
+      <div> YOU LOST: {props.username}</div>
+      <div>Questions Answered: {props.questionsAnswered}</div>
+      <div>Points: {props.points}</div>
 
-  render() {
-    return (
-      <div className="GameOver">
-        Game Over
-        <div> YOU LOST: {this.props.username}</div>
-        <div>Questions Answered: {this.props.questionsAnswered}</div>
-        <div>Points: {this.props.points}</div>
-        <button
-          onClick={() => {
-            this.props.resetGame(this.props.username);
-          }}
-        >
-          Try Again
-        </button>
-        <img
-          src="https://o.dlf.pt/dfpng/smallpng/472-4721713_dead-fish-clipart-clip-art-library-library-cartoon.png"
-          style={{ width: "80%" }}
-        />
-      </div>
-    );
-  }
-}
+      <button onClick={() => { props.resetGame(props.username) }} >
+      Try Again
+      </button>
+
+      <img
+        src="https://o.dlf.pt/dfpng/smallpng/472-4721713_dead-fish-clipart-clip-art-library-library-cartoon.png"
+        style={{ width: "80%" }}
+      />
+    </div>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameOver);

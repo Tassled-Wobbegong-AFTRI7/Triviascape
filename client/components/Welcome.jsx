@@ -10,17 +10,15 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addQuestions: (data) => dispatch(addQuestions(data)),
   loadGame: (state) => dispatch(loadGame(state)),
-  startGame: (categoryValue, username) =>
-    dispatch(startGame(categoryValue, username)),
+  startGame: (categoryValue, username) => dispatch(startGame(categoryValue, username)),
 });
 
 const Welcome = (props) => {
   
-   function handleClick(category) {
-
+  function handleClick(category) {
     let apiURL = `https://opentdb.com/api.php?amount=15&category=${category}&difficulty=easy`;
     
-    
+    //first checks for existing saved Games in database
     fetch('/data/saveGame/loadGame', {
       method: 'POST',
       headers: { "Content-Type": "Application/JSON" },
@@ -28,12 +26,12 @@ const Welcome = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('In the fetch data return')
+    //if no saved games are found: fetch new game data from the API, store it in state under questionData, and start the game
+    //NOTE: this pulls difficulty = "easy" questions by default. Not all question categories have an easy option which can result in a 404 error
         if (data === null) {
           fetch(apiURL)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data, "FROM HANDLECLICK - WELCOME");
             props.addQuestions(data);
             props.startGame(category, props.username);
           })
@@ -41,8 +39,8 @@ const Welcome = (props) => {
             console.log("error:", error);
           });
         }
+    //if saved game is found, load that saved game
         else {
-          console.log(data)
           props.loadGame(data);
         }
       })
@@ -85,11 +83,7 @@ const Welcome = (props) => {
           <option>Art</option>
         </select>
         <button id="categorySubmit"
-          onClick={() =>
-            handleClick(document.getElementById("categoriesSelect").value)
-          }
-        >
-          {" "}
+          onClick={() => handleClick(document.getElementById("categoriesSelect").value)} >
           Submit
         </button>
       </div>

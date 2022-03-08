@@ -35,8 +35,4 @@ export const hardMode = () => ({
   payload: ""
 })
 
-// export const gameOver = () => ({
-//   type: types.GAME_OVER,
-//   payload: "",
-// });
 

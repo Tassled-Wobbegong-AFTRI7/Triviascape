@@ -12,16 +12,17 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   startGame: (categoryValue) => dispatch(startGame(categoryValue)),
-  answerQuestion: (answer, correctAnswer) =>
-    dispatch(answerQuestion(answer, correctAnswer)),
-  // gameOver: () => dispatch(gameOver()),
+  answerQuestion: (answer, correctAnswer) => dispatch(answerQuestion(answer, correctAnswer)),
 });
 
+
 const Questions = (props) => {
+
   function handleAnswer(answer, correctAnswer) {
     props.answerQuestion(answer, correctAnswer);
   }
 
+  //saves the current state to the database
   function saveGame() {
     fetch("/data/saveGame", {
       method: "POST",
@@ -58,24 +59,22 @@ const Questions = (props) => {
   );
   //creating an answer array to push potential answers (buttons with the key) to the
   let answersArr = [];
-  answersArr.push();
   for (let i = 0; i < potentialAnswers.length; i++) {
     answersArr.push(
       <button
         id={`answer${i}`}
         key={i}
-        onClick={() => {
-          handleAnswer(potentialAnswers[i], result.correct_answer);
-        }}
+        onClick={() => { handleAnswer(potentialAnswers[i], result.correct_answer); }}
       >
         {he.decode(potentialAnswers[i])}
       </button>
     );
   }
   //'he' is a library we installed to decode html entity codes
-  const question = he.decode(
-    props.questionData.results[props.questionsAnswered].question
-  );
+  //could be helpful to console log question to see how the questions are being accessed
+  const question = he.decode(props.questionData.results[props.questionsAnswered].question);
+
+  //hard mode LOL: randomizes answer button button every 1000ms 
   let intervalTimer;
   function hardModeHandler() {
     intervalTimer = setInterval(() => {
@@ -102,8 +101,7 @@ const Questions = (props) => {
     <div>
       <div className="Questions" style={{ fontSize: "25px" }}>
         <div style={{ fontSize: "35px", fontWeight: "bold" }}>
-          {" "}
-          Question #{props.questionsAnswered}:{" "}
+          Question #{props.questionsAnswered}:
         </div>
         <br></br>
         {question}

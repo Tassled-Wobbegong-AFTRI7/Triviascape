@@ -17,16 +17,16 @@ class CreateUser extends Component {
   }
 
   handleSubmit(e) {
-    let submitData = {};
+  //this creates a new account in the database using the inputted username and password
+    let createUserData = {};
     const formData = new FormData(e.currentTarget);
     e.preventDefault();
-    for (let [key, value] of formData.entries()) submitData[key] = value;
-    this.props.pageChange();
+    for (let [key, value] of formData.entries()) createUserData[key] = value;
 
     fetch("/data/login/createUser", {
       method: "POST",
       headers: { "Content-Type": "Application/JSON" },
-      body: JSON.stringify({ ...submitData }),
+      body: JSON.stringify({ ...createUserData }),
     })
       .then((res) => res.json())
       .then((data) => {

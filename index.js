@@ -12,3 +12,5 @@ ReactDOM.render(
   </Provider>,
   document.querySelector("#root")
 );
+
+//boring redux boiler plate

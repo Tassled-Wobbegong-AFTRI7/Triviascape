@@ -7,10 +7,13 @@ const mapStateToProps = (state) => ({
   page: state.trivia.page,
 });
 
+
+//this is the login box displayed when first accessing the app
 class LoginContainer extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     if (this.props.page === "login" || this.props.page === "createUser") return (
       <div className="LoginContainer">

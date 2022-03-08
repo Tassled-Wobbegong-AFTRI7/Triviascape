@@ -8,6 +8,8 @@ const mapStateToProps = (state) => ({
   page: state.trivia.page,
 });
 
+//this is the container rendered after users have logged in
+//this container renders the Welcome, Game, and GameOver pages
 class MainContainer extends Component {
   constructor(props) {
     super(props);
