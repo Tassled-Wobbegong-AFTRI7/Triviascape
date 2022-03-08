@@ -13,10 +13,6 @@ class MainContainer extends Component {
     super(props);
   }
   render() {
-<<<<<<< HEAD
-
-=======
->>>>>>> 33446f78f98a632074767c2735b537e58dcd9de3
     if (this.props.page === "welcome")
       return (
         <div className="MainContainer">

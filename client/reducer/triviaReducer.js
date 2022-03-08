@@ -58,7 +58,7 @@ const reducer = (state = initialState, action) => {
       console.log('in load game Reducer', action.payload)
       const {page, username,category, questionData, questionsAnswered,lives, points} = action.payload;
         
-      return {page:page, username:username, category: category, questionData: questionData, questionsAnswered: questionsAnswered, lives:lIDBVersionChangeEvent, points:points};
+      return {page:page, username:username, category: category, questionData: questionData[0] , questionsAnswered: questionsAnswered, lives:lives, points:points};
 
     default: {
       return state;
