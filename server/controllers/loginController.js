@@ -3,11 +3,12 @@ const user = require('../models/loginModel');
 
 const triviaController = {};
 
+// middleware function that creates a new user in db with passed in body
 triviaController.createUser = (req, res, next) => {
   console.log(req.body)
   const { username, password } = req.body;
   user.create({ username: username, password: password })
-    .then((response) => {
+    .then((response) => { // response is an object containing username, password, unique id
       res.locals.user = response;
       return next();
     })
@@ -20,10 +21,11 @@ triviaController.createUser = (req, res, next) => {
     })
 }
 
+// middleware function that returns an object if the passed in body has a match in db
 triviaController.loginUser = (req, res, next) => {
   const { username, password } = req.body;
   user.findOne({ username: username, password: password })
-    .then((response) => {
+    .then((response) => { // response is an object containing username, password, unique id
       //conditional to catch null response 
       res.locals.user = response;
       return next();
