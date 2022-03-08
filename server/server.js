@@ -13,13 +13,13 @@ app.use(express.json());
 
 
 
-// mongoose.connect(
-//   "mongodb+srv://scratch-project:dg8PH0oE2bAwgKEr@cluster0.npof1.mongodb.net/scratch-projectDB?retryWrites=true&w=majority",
-//   { useNewUrlParser: true, useUnifiedTopology: true }
-// );
-// mongoose.connection.once("open", () => {
-//   console.log("Connected to Database");
-// });
+mongoose.connect(
+  "",
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
+mongoose.connection.once("open", () => {
+  console.log("Connected to Database");
+});
 
 app.use("/", express.static(path.join(__dirname, "../dist")));
 

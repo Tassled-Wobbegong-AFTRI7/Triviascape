@@ -25,15 +25,14 @@ export const resetGame = (username) => ({
   payload: username,
 });
 
-<<<<<<< HEAD
 export const loadGame = (state) => ({
   type: types.LOAD_GAME,
   payload: state
-=======
+})
+
 export const hardMode = () => ({
   type: types.HARD_MODE,
   payload: ""
->>>>>>> main
 })
 
 // export const gameOver = () => ({
@@ -41,8 +40,3 @@ export const hardMode = () => ({
 //   payload: "",
 // });
 
-
-export const timer = () => ({
-  type: types.TIMER,
-  payload: ""
-})
