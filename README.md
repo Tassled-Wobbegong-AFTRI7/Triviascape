@@ -1,4 +1,4 @@
-# triviaGame
+# Triviascape
 Trivia Game pulling from the https://opentdb.com/ API. Our goal was to get practice with Redux and working with databases, particularly Mongo-DB. 
 
 Some Added Functionality includes: Logging in as a user, creating a user, selecting a category to answer questions within, implementing a points system and lives that are updated based on answer inputs from user, and an end screen to take users back to the beginning of the application.
